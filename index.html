@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>OSU DEMO LAB</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
 <link rel="stylesheet" href="w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -109,13 +110,14 @@ body, html {
     </li>
     <li class="w3-left-align"><a href="#home">HOME</a></li>
     <li class="w3-hide-small"><a href="#people"><i class="fa fa-user"></i> PEOPLE</a></li>
+    <li class="w3-hide-small"><a href="#projects"><i class="fa fa-line-chart"></i> LANDTRENDR</a></li>
     <li class="w3-hide-small"><a href="#projects"><i class="fa fa-th"></i> PROJECTS</a></li>
     <li class="w3-hide-small"><a href="#data"><i class="fa fa-database"></i> DATA</a></li>
     <li class="w3-hide-small"><a href="#publication"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>      
     <li class="w3-hide-small"><a href="#contact"><i class="fa fa-envelope"></i> CONTACT</a></li>
     <li class="w3-hide-small w3-right">
-      <a href="#" class="w3-hover-red">
-        <i class="fa fa-search"></i>
+      <a href="#" class="w3-hover-grey" style="background-color:orange">
+        OSU
       </a>
     </li>
   </ul>
@@ -177,7 +179,7 @@ body, html {
 
     <!-- Hide this text on small devices -->
     <div class="w3-col m6 w3-padding-large">
-       <p class="w3-large w3-center">We send algorimths and models through the space and time of historical earth observation data to identify where, when, and how changes have occurred on the landscape. Our trip through time gives us hidesight to build more stable historical data sets from which we map landcover, biomass, and other land attributes for last 40 years.</p>
+       <p class="w3-large w3-center">We send algorimths and models through the space and time of historical earth observation data to identify where, when, and how changes have occurred on the landscape. Our trip through time gives us hidesight to build more stable historical data sets from which we map landcover, biomass, and other land attributes for the last 40 years.</p>
     </div>
     <div class="w3-col m6 w3-center w3-padding-large">
       <img src="images/timeTravel.png" class="w3-round w3-image">
@@ -250,5 +252,32 @@ function toggleFunction() {
 }
 </script>
 
+<script>
+    $(function(){	
+        var $window = $(window);		//Window object
+
+        var scrollTime = 1.2;			//Scroll time
+        var scrollDistance = 170;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+
+        $window.on("mousewheel DOMMouseScroll", function(event){
+
+            event.preventDefault();	
+
+            var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+            var scrollTop = $window.scrollTop();
+            var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+
+            TweenMax.to($window, scrollTime, {
+                scrollTo : { y: finalScroll, autoKill:true },
+                    ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    autoKill: true,
+                    overwrite: 5							
+                });
+
+        });
+
+    });
+    </script>    
+    
 </body>
 </html>
